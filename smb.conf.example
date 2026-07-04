@@ -1,0 +1,23 @@
+[global]
+    security = user
+    passdb backend = tdbsam
+    server min protocol = SMB2_02
+    ntlm auth = ntlmv2-only
+    server role = standalone server
+    load printers = no
+    printing = bsd
+    printcap name = /dev/null
+    disable spoolss = yes
+    map to guest = Never
+    restrict anonymous = 2
+
+    server string = NAS
+    log level = 1 auth_json_audit:3
+
+# Share example
+[Test]
+    comment = Test
+    path = /storage
+    valid users = test
+    read only = no
+    browseable = no

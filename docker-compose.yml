@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  samba:
+    image: minimal-samba
+    container_name: samba
+    restart: unless-stopped
+    ports:
+      - "445:445"
+    volumes:
+      # Host user/group lists – so pdbedit can see all host users
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+
+      # Samba configuration
+      - ./smb.conf:/etc/samba/smb.conf:ro
+
+      # Persistent user database (NTLM hashes)
+      - ./samba_private:/var/lib/samba/private
+
+      # Share volumes – adjust paths as needed
+      - /storage:/storage
