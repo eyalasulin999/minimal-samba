@@ -9,8 +9,8 @@ services:
       - "445:445"
     volumes:
       # Host user/group lists – so pdbedit can see all host users
-      - /etc/passwd:/etc/passwd:ro
-      - /etc/group:/etc/group:ro
+      - /tmp/passwd-fuse/passwd:/etc/passwd:ro
+      - /tmp/passwd-fuse/group:/etc/group:ro
 
       # Samba configuration
       - ./smb.conf:/etc/samba/smb.conf:ro

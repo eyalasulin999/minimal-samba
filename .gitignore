@@ -1,2 +1,4 @@
 samba_private/
 smb.conf
+venv/
+__pycache__/
